@@ -49,7 +49,7 @@ const paramsObj = {
   image_type: 'photo',
   orientation: 'horizontal',
   safesearch: 'true',
-  per_page: '20',
+  per_page: '50',
   page: '1',
 };
 
