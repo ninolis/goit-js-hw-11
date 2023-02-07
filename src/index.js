@@ -101,13 +101,27 @@ async function renderGallery(parameters) {
 
 //-------------------LISTENERS--------------------//
 //USER INPUT
-refs.form.addEventListener('input', e => {
-  paramsObj.q = e.target.value;
-});
+
+const isEmpty = str => !str.trim().length;
+
+// refs.form.addEventListener('input', e => {
+//   if (isEmpty(refs.input.value)) {
+//     Notify.failure(`Sorry, you are not allowed to enter only spaces.`);
+//     return (refs.input.value = '');
+//   } else {
+//     paramsObj.q = e.target.value;
+//   }
+// });
 
 //SUBMIT AND RENDER GALLERY
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
+  if (isEmpty(refs.input.value)) {
+    Notify.failure(`Sorry, you are not allowed to enter only spaces.`);
+    return (refs.input.value = '');
+  } else {
+    paramsObj.q = e.target.value;
+  }
   if (refs.gallery.hasChildNodes) {
     refs.gallery.replaceChildren();
   }
